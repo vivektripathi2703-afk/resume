@@ -1,0 +1,233 @@
+/* ===== Colours and fonts (CSS variables) ===== */
+:root {
+  --text: #1C1F23;        /* main text and headings */
+  --text-soft: #4A5058;   /* secondary text, still easy to read */
+  --bg: #F4F4F2;          /* page background */
+  --surface: #FFFFFF;     /* cards and the resume sheet */
+  --line: #D4D4CF;        /* thin structural lines */
+  --accent: #C2410C;      /* safety orange: links and buttons only */
+  --accent-dark: #9A3412; /* hover tone of the accent */
+  --font-head: "Archivo", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", Arial, sans-serif;
+}
+
+/* ===== Base elements ===== */
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 8px;
+  font-family: var(--font-head);
+  line-height: 1.15;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 7vw, 4.25rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+h2 { margin-bottom: 24px; font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+p { margin: 0 0 8px; max-width: 68ch; }
+ul { margin: 0; padding-left: 1.25em; }
+strong { font-weight: 600; }
+
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { color: var(--accent-dark); }
+a:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+/* ===== Navigation bar (flexbox, sticky) ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 8px 24px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-right: auto;
+  color: var(--text);
+  font-family: var(--font-head);
+  font-size: 1.125rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.nav-links { display: flex; gap: 8px; margin: 0; padding: 0; list-style: none; }
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 8px;
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nav-link:hover { color: var(--accent); }
+
+/* ===== Buttons ===== */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 20px;
+  background: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 2px;
+  color: #FFFFFF;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.button:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #FFFFFF; }
+.button-outline { background: transparent; color: var(--accent); }
+.button-outline:hover { background: var(--surface); color: var(--accent-dark); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 40px; }
+
+/* ===== Sections (shared layout) ===== */
+section {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 64px 24px 0;
+  scroll-margin-top: 64px;
+}
+
+/* ===== Hero (#hero) ===== */
+#hero { padding-top: 80px; }
+.role { color: var(--text-soft); font-weight: 600; }
+
+.lead {
+  max-width: 34ch;
+  margin-top: 24px;
+  font-size: clamp(1.25rem, 2.6vw, 1.625rem);
+  line-height: 1.4;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 40px;
+  margin-top: 40px;
+  padding: 0;
+  list-style: none;
+}
+
+.fact { max-width: 20rem; color: var(--text-soft); }
+
+.fact strong {
+  display: block;
+  color: var(--text);
+  font-family: var(--font-head);
+  font-size: 1.75rem;
+  font-weight: 800;
+}
+
+/* ===== What I do (#work) ===== */
+#work ul { display: grid; gap: 16px; max-width: 68ch; }
+
+/* ===== Current sites (#sites): cards in a grid ===== */
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.card { padding: 24px; background: var(--surface); border: 1px solid var(--line); }
+.place { color: var(--text-soft); }
+
+/* ===== Paper resume (#resume) ===== */
+.download-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.sheet {
+  max-width: 820px;
+  padding: 48px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-size: 0.9375rem;
+}
+
+.sheet-name { font-size: 2rem; font-weight: 800; }
+.sheet-contact { color: var(--text-soft); }
+
+.sheet h4 {
+  margin: 24px 0 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sheet ul { display: grid; gap: 4px; }
+.sheet li { max-width: 75ch; }
+.entry-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 24px; }
+.entry-head p:last-child { color: var(--text-soft); }
+
+/* ===== Contact (#contact) ===== */
+#contact .actions { margin-top: 24px; }
+.email-text { margin-top: 24px; }
+
+/* ===== Footer ===== */
+footer {
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 64px 24px 40px;
+  color: var(--text-soft);
+}
+
+/* ===== Small screens (narrower than 700px) ===== */
+@media (max-width: 699px) {
+  nav { flex-wrap: wrap; gap: 0 16px; padding: 8px 16px; }
+  .nav-links { order: 3; width: 100%; justify-content: space-between; }
+  .nav-link { padding: 0 4px; }
+  section { padding: 40px 16px 0; scroll-margin-top: 112px; }
+  #hero { padding-top: 40px; }
+  .cards { grid-template-columns: 1fr; }
+  .sheet { padding: 24px; }
+  footer { padding: 40px 16px 32px; }
+}
+
+/* ===== Print: only the resume, one A4 page, black on white ===== */
+@media print {
+  @page { size: A4; margin: 12mm; }
+  body { background: #FFFFFF; color: #000000; line-height: 1.4; }
+  .site-header, #hero, #work, #sites, #contact, footer,
+  #resume > h2, .download-link { display: none; }
+  #resume { max-width: none; padding: 0; }
+  .sheet { max-width: none; padding: 0; border: 0; font-size: 10pt; }
+  .sheet p, .sheet li { max-width: none; }
+  .sheet *, .sheet a, .entry-head p:last-child { color: #000000; text-decoration: none; }
+  .sheet h4 { border-color: #000000; }
+}
+
+/* ===== Reduced motion: turn off the hover fade ===== */
+@media (prefers-reduced-motion: reduce) {
+  .button { transition: none; }
+}
