@@ -225,6 +225,7 @@ footer {
   .sheet p, .sheet li { max-width: none; }
   .sheet *, .sheet a, .entry-head p:last-child { color: #000000; text-decoration: none; }
   .sheet h4 { border-color: #000000; }
+  .sheet-contact a { white-space: nowrap; }
 }
 
 /* ===== Reduced motion: turn off the hover fade ===== */
